@@ -1,2 +1,14 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_transport_management,access_transport_management,model_transport_management,base.group_user,1,1,1,1
+access_transport_vehicule,access_transport_vehicule,model_transport_vehicule,base.group_user,1,1,1,1
+access_transport_chauffeur,access_transport_chauffeur,model_transport_chauffeur,base.group_user,1,1,1,1
+access_transport_reservation,access_transport_reservation,model_transport_reservation,base.group_user,1,1,1,1
+access_transport_seat,access_transport_seat,model_transport_seat,base.group_user,1,1,1,1
+access_transport_seat_reserve_wizard,access_transport_seat_reserve_wizard,model_transport_seat_reserve_wizard,base.group_user,1,1,1,1
+
+access_transport_route_user,transport.route user,model_transport_route,base.group_user,1,1,1,1
+access_transport_route_manager,transport.route manager,model_transport_route,base.group_user,1,1,1,1
+access_transport_route_stop_user,transport.route.stop user,model_transport_route_stop,base.group_user,1,1,1,1
+access_transport_route_stop_manager,transport.route.stop manager,model_transport_route_stop,base.group_user,1,1,1,1
+access_transport_trip_user,transport.trip user,model_transport_trip,base.group_user,1,1,1,1
+access_transport_trip_manager,transport.trip manager,model_transport_trip,base.group_user,1,1,1,1

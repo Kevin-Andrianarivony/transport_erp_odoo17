@@ -1,0 +1,110 @@
+
+<odoo>
+
+    <!-- FORM VIEW: transport.reservation -->
+    <record id="view_reservation_form" model="ir.ui.view">
+        <field name="name">transport.reservation.form</field>
+        <field name="model">transport.reservation</field>
+        <field name="arch" type="xml">
+            <form string="Reservation">
+                <sheet>
+
+                    <!-- Infos Trip / Route -->
+                    <group>
+                        <field name="trip_id"/>
+                        <field name="route_id" readonly="1"/>
+                        <field name="origin" readonly="1"/>
+                        <field name="destination" readonly="1"/>
+                    </group>
+
+                    <!-- Infos Véhicule / Chauffeur / Date / Capacité -->
+                    <group>
+                        <field name="voiture_id" readonly="1"/>
+                        <field name="chauffeur_id" readonly="1"/>
+                        <field name="capacite" readonly="1"/>
+                        <field name="date_depart" readonly="1"/>
+                    </group>
+
+                    <group string="Places">
+                        <separator string="Chauffeur / Passagers"/>
+
+                        <field name="seat_ids" mode="kanban" class="seat_grid">
+                            <kanban create="0" delete="0">
+                                <field name="name"/>
+                                <field name="state"/>
+                                <field name="passenger_name"/>
+
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="seat_card">
+
+                                            <!-- Nom de la place -->
+                                            <div class="seat_title">
+                                                <!-- Chauffeur non cliquable -->
+                                                <t t-if="record.state.raw_value != 'driver'">
+                                                    <button type="object"
+                                                            name="action_open_reserve_wizard"
+                                                            class="btn btn-link p-0"
+                                                            title="Réserver cette place">
+                                                        <field name="name"/>
+                                                    </button>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="fw-bold">
+                                                        <field name="name"/>
+                                                    </span>
+                                                </t>
+                                            </div>
+
+                                            <!-- Statut -->
+                                            <div class="seat_status">
+                                                <t t-if="record.state.raw_value == 'driver'">
+                                                    <span class="badge bg-primary">Chauffeur</span>
+                                                </t>
+                                                <t t-elif="record.state.raw_value == 'reserved'">
+                                                    <span class="badge bg-danger">Réservé</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="badge bg-success">Libre</span>
+                                                </t>
+                                            </div>
+
+                                            <!-- Passager -->
+                                            <div t-if="record.passenger_name.value" class="seat_passenger">
+                                                👤 <field name="passenger_name"/>
+                                            </div>
+
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- TREE VIEW: transport.reservation -->
+    <record id="view_reservation_tree" model="ir.ui.view">
+        <field name="name">transport.reservation.tree</field>
+        <field name="model">transport.reservation</field>
+        <field name="arch" type="xml">
+            <tree string="Reservations">
+                <field name="trip_id"/>
+                <field name="voiture_id"/>
+                <field name="date_depart"/>
+                <field name="capacite"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="action_reservation" model="ir.actions.act_window">
+        <field name="name">Reservations</field>
+        <field name="res_model">transport.reservation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

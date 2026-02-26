@@ -1,0 +1,77 @@
+<!-- transport_management/views/trip_views.xml -->
+<odoo>
+  <record id="view_transport_trip_tree" model="ir.ui.view">
+    <field name="name">transport.trip.tree</field>
+    <field name="model">transport.trip</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="route_id"/>
+        <field name="departure_datetime"/>
+        <field name="arrival_datetime"/>
+        <field name="capacity"/>
+        <field name="reserved_seats"/>
+        <field name="available_seats"/>
+        <field name="state"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="view_transport_trip_form" model="ir.ui.view">
+    <field name="name">transport.trip.form</field>
+    <field name="model">transport.trip</field>
+    <field name="arch" type="xml">
+      <form>
+        <header>
+            <button name="action_set_draft" type="object" string="Set Draft"
+                    invisible="state == 'draft'"/>
+
+            <button name="action_confirm" type="object" string="Confirm" class="btn-primary"
+                    invisible="state != 'draft'"/>
+
+            <button name="action_start" type="object" string="Start" class="btn-primary"
+                    invisible="state != 'confirmed'"/>
+
+            <button name="action_done" type="object" string="Done" class="btn-primary"
+                    invisible="state != 'in_progress'"/>
+
+            <button name="action_cancel" type="object" string="Cancel"
+                    invisible="state not in ('draft','confirmed','in_progress')"/>
+
+            <field name="state" widget="statusbar"
+                    statusbar_visible="draft,confirmed,in_progress,done,cancelled"/>
+            </header>
+
+        <sheet>
+          <div class="oe_title">
+            <h1><field name="name" readonly="1"/></h1>
+          </div>
+
+          <group>
+            <group>
+              <field name="route_id"/>
+              <field name="departure_datetime"/>
+              <field name="arrival_datetime"/>
+            </group>
+            <group>
+              <field name="capacity"/>
+              <field name="reserved_seats"/>
+              <field name="available_seats" readonly="1"/>
+            </group>
+          </group>
+
+          <group string="Assignments" col="2">
+            <field name="vehicle_id"/>
+            <field name="driver_id"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_transport_trip" model="ir.actions.act_window">
+    <field name="name">Trips</field>
+    <field name="res_model">transport.trip</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+</odoo>

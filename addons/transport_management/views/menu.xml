@@ -1,0 +1,64 @@
+<odoo>
+
+    <!-- Menu principal -->
+    <menuitem id="menu_transport_root"
+              name="Transport Management"
+              sequence="10"/>
+
+    <!-- Sous-menu Véhicules -->
+    <menuitem id="menu_vehicule"
+              name="Véhicules"
+              parent="menu_transport_root"
+              action="action_vehicule"
+              sequence="1"/>
+
+    <!-- Sous-menu Chauffeurs -->
+    <menuitem id="menu_chauffeur"
+              name="Chauffeurs"
+              parent="menu_transport_root"
+              action="action_chauffeur"
+              sequence="2"/>
+
+    <!-- Sous-menu Reservation -->
+    <menuitem id="menu_reservation"
+          name="Reservations"
+          parent="menu_transport_root"
+          action="action_reservation"
+          sequence="3"/>
+
+    <menuitem id="menu_transport_routes"
+          name="Routes"
+          parent="menu_transport_root"
+          action="action_transport_management"
+          sequence="20"/>
+
+    <menuitem id="menu_transport_trips"
+          name="Trips"
+          parent="menu_transport_root"
+          action="action_transport_trip"
+          sequence="30"/>
+
+    <!-- Sous-menu trajet
+    <menuitem id="menu_transport_managements"
+            name="Routes"
+            parent="menu_transport_root"
+            sequence="4"/>
+
+    <menuitem id="menu_transport_planning"
+            name="Planning"
+            parent="menu_transport_root"
+            sequence="5"/>
+
+    <menuitem id="menu_transport_management_routes"
+            name="Routes"
+            parent="menu_transport_root"
+            action="action_transport_management"
+            sequence="10"/>
+
+    <menuitem id="menu_transport_trip_trips"
+            name="Trips"
+            parent="menu_transport_root"
+            action="action_transport_trip"
+            sequence="10"/>
+ -->
+</odoo>

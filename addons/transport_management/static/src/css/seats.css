@@ -1,0 +1,19 @@
+.seat_grid .o_kanban_renderer {
+    display: grid !important;
+    grid-template-columns: repeat(3, auto);
+    gap: 16px;
+}
+
+.seat_grid .seat_card {
+    width: 150px;
+    height: 110px;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+}
+
+.seat_grid .seat_title { font-weight: 700; }
+.seat_grid .seat_status { margin-top: 8px; }
+.seat_grid .seat_passenger { margin-top: 6px; font-size: 12px; }

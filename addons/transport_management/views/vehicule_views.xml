@@ -1,0 +1,48 @@
+<odoo>
+
+    <!-- ====== ACTION ====== -->
+    <record id="action_vehicule" model="ir.actions.act_window">
+        <field name="name">Véhicules</field>
+        <field name="res_model">transport.vehicule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ====== VUE LISTE ====== -->
+    <record id="view_vehicule_tree" model="ir.ui.view">
+        <field name="name">transport.vehicule.tree</field>
+        <field name="model">transport.vehicule</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="immatriculation"/>
+                <field name="name"/>
+                <field name="marque"/>
+                <field name="modele"/>
+                <field name="etat"/>
+                <field name="chauffeur_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- ====== VUE FORMULAIRE ====== -->
+    <record id="view_vehicule_form" model="ir.ui.view">
+        <field name="name">transport.vehicule.form</field>
+        <field name="model">transport.vehicule</field>
+        <field name="arch" type="xml">
+            <form string="Véhicule">
+                <sheet>
+                    <group>
+                        <field name="immatriculation"/>
+                        <field name="name"/>
+                        <field name="marque"/>
+                        <field name="modele"/>
+                        <field name="annee"/>
+                        <field name="capacite"/>
+                        <field name="etat"/>
+                        <field name="chauffeur_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

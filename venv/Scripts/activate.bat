@@ -8,11 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Users\RATSILA\OneDrive\Desktop\ERP\odoo17\venv
-=======
-set VIRTUAL_ENV=C:\Users\RATSILA\OneDrive\Desktop\ERP\venv
->>>>>>> dec2290533bdd13030994ce2e2aca840cf2b70ee
 
 if not defined PROMPT set PROMPT=$P$G
 
